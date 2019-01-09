@@ -26,5 +26,8 @@
     "jshint": "^2.9.6",
     "less-plugin-autoprefix": "^2.0.0",
     "opn": "^5.4.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }

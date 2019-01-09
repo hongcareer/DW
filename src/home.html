@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/home.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_973177_l70p6hosph.css">
+</head>
+<body>
+  <header id="header">
+    <div class="header-nav">
+      <div class="container">
+        <div class="left">
+          <span ></span>
+          <span>北京</span>
+          <span>[切换城市]</span>
+        </div>
+        <div class="right">
+          <ul>
+            <li><a href="javascript:;" class="active">
+              首页
+            </a></li>
+            <li><a href="javascript:;">
+              关于我们
+            </a></li>
+            <li><a href="javascript:;">
+              服务商
+            </a></li>
+            <li><a href="javascript:;">
+              商家入驻
+            </a></li>
+            <li><a href="javascript:;">
+              商家登录
+            </a></li>
+            <li><a href="javascript:;">
+              到位APP
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="header-bottom">
+      <div class="container">
+        <div class="logo">
+          <img src="./images/logo.png" alt="">
+        </div>
+        <div class="search">
+          <span></span>
+          <input type="text" placeholder="输入关键词搜索商家、服务">
+          <span class="searchbtn">搜服务</span>
+        </div>
+        <div class="code">
+          <div class="triangle"></div>
+          <img src="./images/2.png" alt="">
+        </div>
+      </div>
+    </div>
+  </header>
+  <div id="carousel-init">
+    <div class="carousel">
+      <div class="bd">
+        <ul>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="hd">
+        <ul>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <div class="banner-nav">
+      <div class="nav-left">
+        <ul class="nav-left-list">
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="serve-list">
+
+  </div>
+  <script type="text/javascript" src="./js/jquery-1.10.1.js"></script>
+  <script type="text/javascript" src="./js/template.js"></script>
+  <script type="text/javascript" src="./js/jquery.SuperSlide.2.1.1.js"></script>
+  <script type="text/html" id="temp1">
+    {{each data}}
+    <li class="navname">
+      <span class="navname-serve">{{$value.serviceIndex}}</span>
+      <span class="iconfont icon-iconfontjiantou2"></span>
+      <ul class="navname-rightnav">
+        {{each $value.serviceType}}
+        <li class="rightnav-main">{{$value}}</li>
+        {{/each}}
+      </ul>
+    </li>
+    {{/each}}
+  </script>
+  <script type="text/html" id="temp2">
+    {{each data}}
+    <div class="box">
+      <div class="content">
+        <div class="navigation">
+          <div class="serveIndex">{{$value.serviceIndex}}</div>
+          <div class="serveType">
+            {{each $value.serviceType}}
+            <a href="###">{{$value}}</a>
+            {{/each}}
+          </div>
+          <div class="moreServe">更多服务></div>
+        </div>
+        <div class="serveTags">
+          <div class="tag-top">
+            {{each $value.shopList}}
+            <a href="###">
+              <div class="shopList">
+                <img src={{$value.imgUrl}} alt="" class="serveImg">
+                <div class="serviceName">{{$value.serviceName}}</div>
+                <div class="description">{{$value.description}}</div>
+                <div class="servePrice">
+                  <span class="price">{{$value.price}}</span>元/小时
+                  <span class="btn">查看详情</span>
+                </div>
+              </div>
+            </a>
+            {{/each}}
+          </div>
+          <div class="tag-bottom">
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+            <a href="###">邻家洁</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </script>
+  <script type="text/javascript">
+    $(function(){
+      $('.carousel').slide({mainCell:".bd ul",trigger:"click"});
+      //获取home页数据template('home',data)
+      $.get('http://localhost:3000/home',function(data) {
+        $('.nav-left-list').html(template('temp1',{data:data}))
+        $('#serve-list').html(template('temp2',{data:data}))
+      });
+      //鼠标移入，显示服务类型
+
+    })
+  </script>
+</body>
+</html>
