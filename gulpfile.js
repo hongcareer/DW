@@ -100,7 +100,7 @@ gulp.task('watch', function() {
     livereload: true  // 自动刷新
   });
   //自动打开浏览器
-  opn('http://localhost:3000/home.html');
+  opn('http://localhost:3000/server.html');
   //监视指定文件（第一个参数），一旦文件发生变化，就自动执行后面的任务（第二个参数）
   gulp.watch('./src/less/*.less', ['cssmin']);
   gulp.watch('./src/js/*.js', ['uglify']);

@@ -24,7 +24,7 @@
             <li><a href="javascript:;">
               关于我们
             </a></li>
-            <li><a href="javascript:;">
+            <li><a href="./server.html">
               服务商
             </a></li>
             <li><a href="javascript:;">
@@ -189,6 +189,7 @@
   <script type="text/javascript" src="./js/jquery-1.10.1.js"></script>
   <script type="text/javascript" src="./js/template.js"></script>
   <script type="text/javascript" src="./js/jquery.SuperSlide.2.1.1.js"></script>
+  <script type="text/javascript" src="./js/header.js"></script>
   <script type="text/html" id="temp1">
     {{each data}}
     <li class="navname">
@@ -263,20 +264,7 @@
         console.log(data);
         $('.cityItem').html(template('temp3',{data,data}))
       })
-      //头部显示
-      $(function () {
-        $(window).scroll(function(){
-          let scrollTop = $(window).scrollTop();
-          if(scrollTop >=20){
-            $('#header').stop().hide();
-            $('.header').slideDown(501);
-          }else{
-            $('#header').stop().show();
-            $('.header').stop().hide();
-          }
 
-        })
-      }())
 
     })
   </script>

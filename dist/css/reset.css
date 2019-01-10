@@ -24,6 +24,7 @@ time, mark, audio, video, input {
 }
 body,html{
   background-color: #F4F4F4;
+  color: #333;
 }
 
 /* HTML5 display-role reset for older browsers */

@@ -3,8 +3,230 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/server.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_973177_shof7pjwd4.css">
 </head>
 <body>
+<header id="header">
+  <div class="header-nav">
+    <div class="container">
+      <div class="left">
+        <span ></span>
+        <span>北京</span>
+        <span>[切换城市]</span>
+      </div>
+      <div class="right">
+        <ul>
+          <li><a href="./home.html" >
+            首页
+          </a></li>
+          <li><a href="javascript:;">
+            关于我们
+          </a></li>
+          <li><a href="./server.html" class="active">
+            服务商
+          </a></li>
+          <li><a href="javascript:;">
+            商家入驻
+          </a></li>
+          <li><a href="javascript:;">
+            商家登录
+          </a></li>
+          <li><a href="javascript:;">
+            到位APP
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="header-bottom">
+    <div class="container">
+      <div class="logo">
+        <img src="./images/logo.png" alt="">
+      </div>
+      <div class="search">
+        <span></span>
+        <input type="text" placeholder="输入关键词搜索商家、服务">
+        <span class="searchbtn">搜服务</span>
+      </div>
+      <div class="code">
+        <div class="triangle"></div>
+        <img src="./images/2.png" alt="">
+      </div>
+    </div>
+  </div>
+</header>
+<header class="header">
+  <div class="header-nav">
+    <div class="container">
+      <div class="left">
+        <span ></span>
+        <span>北京</span>
+        <span>[切换城市]</span>
+      </div>
+      <div class="right">
+        <ul>
+          <li><a href="javascript:;" class="active">
+            首页
+          </a></li>
+          <li><a href="javascript:;">
+            关于我们
+          </a></li>
+          <li><a href="javascript:;">
+            服务商
+          </a></li>
+          <li><a href="javascript:;">
+            商家入驻
+          </a></li>
+          <li><a href="javascript:;">
+            商家登录
+          </a></li>
+          <li><a href="javascript:;">
+            到位APP
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="header-bottom">
+    <div class="container">
+      <div class="logo">
+        <img src="./images/logo.png" alt="">
+      </div>
+      <div class="search">
+        <span></span>
+        <input type="text" placeholder="输入关键词搜索商家、服务">
+        <span class="searchbtn">搜服务</span>
+      </div>
+      <div class="code">
+        <div class="triangle"></div>
+        <img src="./images/2.png" alt="">
+      </div>
+    </div>
+  </div>
+</header>
+<h2 class="serverMan">服务商</h2>
+<div id="center">
+  <div class="centerLeft">
+    <div class="tag-top">
 
+    </div>
+    <div class="get-more">
+      <span>查看更多商家 <i class="iconfont icon-jiantouxia"></i> </span>
+    </div>
+  </div>
+  <div class="centerRight">
+    <img src="./images/tuijianfuwushang_03.jpg" alt="">
+    <div class="erweima">
+      <img src="./images/2.png" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="baoZ">
+  <h2>到位<span>服务</span>保障</h2>
+  <p>到位平台担保交易安全，交易未成功100%退款</p>
+</div>
+<div class="sevi">
+  <ul>
+    <li>
+      <span class="iconfont icon-duihao"></span>
+      <span>优选服务</span>
+    </li>
+    <li>
+      <span class="iconfont icon-duihao"></span>
+      <span>优选服务</span>
+    </li>
+    <li>
+      <span class="iconfont icon-duihao"></span>
+      <span>优选服务</span>
+    </li>
+  </ul>
+</div>
+<div id="footer">
+  <div class="f-content">
+    <div class="hotCity">热门城市</div>
+    <div class="cityItem">
+
+    </div>
+  </div>
+</div>
+<div id="copyRight">
+  <p>©2015 版权所有 到位 daoway.com 京ICP备15001471号-1 北京邻家科技有限公司</p>
+</div>
+
+<script type="text/html" id="temp4">
+  {{each data}}
+  <a href='#www'>
+    <div class="shopList">
+      <img src={{$value.imgUrl}} alt="" class="serveImg">
+      <div class="serviceName">
+        <span class="iconfont icon-icon-test2 "></span>
+        <span class="title">{{$value.title}}</span>
+      </div>
+      <div class="serveCount">
+        <span class="count">已接单{{$value.orderCount}}单</span>
+        <span class="rate">好评{{$value.positiveRate}}</span>
+      </div>
+    </div>
+  </a>
+  {{/each}}
+</script>
+<script type="text/html" id="temp5">
+  {{each data}}
+  {{each $value.hotCity}}
+  <a href="">{{$value}}</a>
+  {{/each}}
+  {{/each}}
+</script>
+<!--<script src="https://cdn.bootcss.com/jquery/3.3.1/core.js"></script>-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="./js/jquery-1.10.1.js"></script>
+<script type="text/javascript" src="./js/template.js"></script>
+<script type="text/javascript" src="./js/header.js"></script>
+
+<script type="text/javascript">
+  $(function(){
+    //获取服务页面
+    $.get('http://localhost:3000/server',function(data) {
+      $('.tag-top').html(template('temp4',{data:data}));
+      $('.tag-top>a').each((index,item) => {
+        $(item).click(function(){
+          $(item).attr('href',`./shop.html#${index}`)
+        })
+      })
+    });
+    //获取城市页面
+    $.get('http://localhost:3000/city',(data) =>{
+      console.log(data);
+      $('.cityItem').html(template('temp5',{data,data}))
+    });
+    //点击获取serverItem数据
+    $('.get-more').click(function () {
+      $.get('http://localhost:3000/server',(data) =>{
+        $('.get-more')
+        $(data).each((index,item) =>{
+          let a = `<a href="###">
+                    <div class="shopList">
+                      <img src=${item.imgUrl} alt="" class="serveImg">
+                      <div class="serviceName">
+                        <span class="iconfont icon-icon-test2 "></span>
+                        <span class="title">${item.title}</span>
+                      </div>
+                      <div class="serveCount">
+                        <span class="count">已接单${item.orderCount}单</span>
+                        <span class="rate">好评${item.positiveRate}</span>
+                      </div>
+                    </div>
+                  </a> `;
+          $('.tag-top').append(a)
+        })
+        //点击跳转
+      });
+    });
+
+  })
+</script>
 </body>
 </html>
